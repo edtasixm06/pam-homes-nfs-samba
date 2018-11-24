@@ -1,2 +1,2 @@
-/tmp/home *(rw,sync)
+/var/tmp/home *(rw,sync)
 
