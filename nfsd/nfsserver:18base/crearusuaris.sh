@@ -19,3 +19,16 @@ marta:*:5003:600:Marta Mas:/tmp/home/marta:
 jordi:*:5004:100:Jordi Mas:/tmp/home/jordi:
 admin:*:10:10:Administrador Sistema:/tmp/home/admin:
 
+mkdir /tmp/home
+mkdir /tmp/home/pere
+mkdir /tmp/home/anna
+mkdir /tmp/home/marta
+mkdir /tmp/home/jordi
+mkdir /tmp/home/admin
+chown pere.users /tmp/home/pere
+chown anna.alumnes /tmp/home/anna
+chown marta.alumnes /tmp/home/marta
+chown jordi.users /tmp/home/jordi
+chown admin.wheel /tmp/home/admin
+
+

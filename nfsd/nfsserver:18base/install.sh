@@ -18,6 +18,18 @@ echo "local04" | passwd --stdin local04
 echo "local05" | passwd --stdin local05
 echo "local06" | passwd --stdin local06
 
+mkdir /tmp/home
+mkdir /tmp/home/pere
+mkdir /tmp/home/anna
+mkdir /tmp/home/marta
+mkdir /tmp/home/jordi
+mkdir /tmp/home/admin
+chown pere.users /tmp/home/pere
+chown anna.alumnes /tmp/home/anna
+chown marta.alumnes /tmp/home/marta
+chown jordi.users /tmp/home/jordi
+chown admin.wheel /tmp/home/admin
+
 bash /opt/docker/auth.sh
 cp /opt/docker/nslcd.conf /etc/nslcd.conf
 cp /opt/docker/ldap.conf /etc/openldap/ldap.conf
@@ -25,4 +37,8 @@ cp /opt/docker/nsswitch.conf /etc/nsswitch.conf
 cp /opt/docker/system-auth-edt /etc/pam.d/system-auth-edt
 cp /opt/docker/pam_mount.conf.xml /etc/security/pam_mount.conf.xml
 ln -sf /etc/pam.d/system-auth-edt /etc/pam.d/system-auth
+
+cp /opt/docker/exports /etc/exports
+mkdir /run/rpcbind 
+touch /run/rpcbind/rpcbind.lock
 
