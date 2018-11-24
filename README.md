@@ -10,3 +10,9 @@ Repositoris
 
  * **nfsd** repositori per generar servidors nfs.
 
+
+PENDENT:
+
+ * resoldre si el client ha de tenir o no rpcbind i rpc.statd
+ * resoldre que la propietat sigui dels usuris i ni de root
+
