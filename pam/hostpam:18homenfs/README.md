@@ -6,6 +6,7 @@ Repositori d'exemples de containers docker que utilitzen PAM
  * **hostpam:18hostnfs** host pam amb authenticació ldap. Munta els homes de l'usuari via nfs.
 Atenció, per poder realitzar el mount cal que el container es generi amb l'opció **--privileged**.
 
+
 #### Execució
 
 ```
@@ -27,7 +28,7 @@ session     sufficient    pam_unix.so
 pam_mount.conf.xml (només a pere se li genera el  ramdisk):
 ```
 <volume user="pere" fstype="tmpfs" mountpoint="~/test" options="size=10M,uid=%(USER),mode=0755" />
-<volume user="*" fstype="nfs" server="172.20.0.1" path="/var/tmp/home/%(USER)"  mountpoint="~/%(USER)" />
+<volume user="*" fstype="nfs" server="nfsserver" path="/var/tmp/home/%(USER)"  mountpoint="~/%(USER)" />
 ```
 
 
