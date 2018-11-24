@@ -1,0 +1,8 @@
+<!--
+  <fd0ssh>  </fd0ssh>
+  <volume fstype="fuse" path="sshfs#anna@172.20.0.1:/var/tmp/home/anna" mountpoint="/tmp/kaka" ssh="1" options="nonempty" />
+-->
+  <fusemount> sshfs %(VOLUME) %(MNTPT) </fusemount>
+  <volume fstype="fuse" path="anna@172.20.0.1:/var/tmp/home/anna" mountpoint="/tmp/kaka" ssh="yes" options="nonempty" />
+
+
