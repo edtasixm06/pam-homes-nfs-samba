@@ -18,17 +18,17 @@ echo "local04" | passwd --stdin local04
 echo "local05" | passwd --stdin local05
 echo "local06" | passwd --stdin local06
 
-mkdir /tmp/home
-mkdir /tmp/home/pere
-mkdir /tmp/home/anna
-mkdir /tmp/home/marta
-mkdir /tmp/home/jordi
-mkdir /tmp/home/admin
-chown pere.users /tmp/home/pere
-chown anna.alumnes /tmp/home/anna
-chown marta.alumnes /tmp/home/marta
-chown jordi.users /tmp/home/jordi
-chown admin.wheel /tmp/home/admin
+mkdir /var//tmp/home
+mkdir /var//tmp/home/pere
+mkdir /var//tmp/home/anna
+mkdir /var//tmp/home/marta
+mkdir /var//tmp/home/jordi
+mkdir /var//tmp/home/admin
+chown pere.users /var/tmp/home/pere
+chown anna.alumnes /var/tmp/home/anna
+chown marta.alumnes /var/tmp/home/marta
+chown jordi.users /var/tmp/home/jordi
+chown admin.wheel /var/tmp/home/admin
 
 bash /opt/docker/auth.sh
 cp /opt/docker/nslcd.conf /etc/nslcd.conf
