@@ -24,11 +24,18 @@ mkdir /var//tmp/home/anna
 mkdir /var//tmp/home/marta
 mkdir /var//tmp/home/jordi
 mkdir /var//tmp/home/admin
-chown pere.users /var/tmp/home/pere
-chown anna.alumnes /var/tmp/home/anna
-chown marta.alumnes /var/tmp/home/marta
-chown jordi.users /var/tmp/home/jordi
-chown admin.wheel /var/tmp/home/admin
+
+cp README.md /var//tmp/home/pere
+cp README.md /var//tmp/home/anna
+cp README.md /var//tmp/home/marta
+cp README.md /var//tmp/home/jordi
+cp README.md /var//tmp/home/admin
+
+chown -R pere.users /var/tmp/home/pere
+chown -R anna.alumnes /var/tmp/home/anna
+chown -R marta.alumnes /var/tmp/home/marta
+chown -R jordi.users /var/tmp/home/jordi
+chown -R admin.wheel /var/tmp/home/admin
 
 bash /opt/docker/auth.sh
 cp -ra  /opt/docker/nslcd.conf /etc/nslcd.conf
