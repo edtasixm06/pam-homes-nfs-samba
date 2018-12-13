@@ -3,8 +3,8 @@
 
 Servidor NFS
 
- * **nfsserver:18base** Servidor nfs. Com a host està configurat amb PAM+LDAP. S'hi creen usuaris locals i té accés via LDAp als usuaris de xarxa.
-Crea els homes dels usuaris (respectanet el home indicat al LDAP de cada usuari), li posa xixa al home i li assigna l'usuari i grup apropiat. Exporta els
+ * **nfsserver:18base** Servidor nfs. Com a host està configurat amb PAM+LDAP. S'hi creen usuaris locals i té accés via LDAP als usuaris de xarxa.
+Crea els homes dels usuaris (respectant el home indicat al LDAP de cada usuari), li posa xixa al home i li assigna l'usuari i grup apropiat. Exporta els
 homes via el servei nfs-utils (que engega).
 
 
