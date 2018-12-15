@@ -10,12 +10,12 @@ ASIX M06-ASO Escola del treball de barcelona
 
 * **hostpam:18homesamba** host pam amb authenticació ldap. Munta els homes de l'usuari via samba.
 Per posar en funcionament aquest model calen tres elements: un servidor LDAP, un servidor SAMBA i un host que actua de
-client amb PAM + LDAP + pam_mount.so per carregar els homes dels usuaris via SAMBA.
+client amb PAM + LDAP + pam_mount.so per carregar els homes dels usuaris via SAMBA. Cal instal·lar *cifs-utils*.
 
 
 Fer que els homes dels usuaris es muntin per samba. Primer caldrà en un servidor samba crear els directoris homes dels usuaris, i assignar-los els permisos apropiats, propietari i grup (recursivament). Podem fer que el servidor samba sigui primerament el nostre host amb l’adreça de docker, i posteriorment fabricar un container servidor samba.
 
-Si volem que els homes de xarxa dels usuaris es muntin individualment, per exemple posant un directori home-xarxa dins del home local, cal instal·lar pam_mount i configurar pam_mount.conf.xml. 
+Si volem que els homes de xarxa dels usuaris es muntin individualment, per exemple posant un directori home-xarxa dins del home local, cal instal·lar pam_mount i configurar pam_mount.conf.xml. Aquest usarà miunt.cifs per muntar el recurs de samba i per això cal instal·lar *cifs-utils*.
 És especialment important configurar correctament els permisos amb què es munta el directori de xarxa, el propietari i grup ha de ser el de l’usuari.
 
 
@@ -33,7 +33,7 @@ docker run --rm --name samba -h samba --net sambanet --privileged -it edtasixm06
 
 #### Configuracions
 
-Cal instal-lar al host client el paquet cifs-utils per poder disposar del mount.cifs.
+Cal instal-lar al host client el paquet **cifs-utils** per poder disposar del mount.cifs.
 
 pam_mount.conf.xml (només a pere se li genera el  ramdisk):
 ```
