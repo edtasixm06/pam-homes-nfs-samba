@@ -44,19 +44,17 @@ pam_mount.conf.xml (només a pere se li genera el  ramdisk):
 #### Utilització
 
 ```
-[local01@host ~]$ su - local02
-pam_mount password:
-[local02@host ~]$ pwd
-/home/local02
-[local02@host ~]$ ll
-total 0
+[root@host docker]# su - local01
 
-[local01@host ~]$ su - pere
+[local01@host ~]$ su - anna
 pam_mount password:
-[pere@host ~]$ pwd
-/tmp/home/pere
-[pere@host ~]$ ll
-total 4
-drwx------. 3 pere users 4096 Nov 24 14:44 pere
+Creating directory '/tmp/home/anna'.
+
+[anna@host ~]$ ll
+total 0
+drwxr-xr-x+ 2 anna alumnes 0 Dec 15 18:59 anna
+
+[anna@host ~]$ mount -t cifs
+//samba/anna on /tmp/home/anna/anna type cifs (rw,relatime,vers=1.0,cache=strict,username=anna,domain=,uid=5002,forceuid,gid=600,forcegid,addr=172.21.0.3,unix,posixpaths,serverino,mapposix,acl,rsize=1048576,wsize=65536,echo_interval=60,actimeo=1)
 ```
 
