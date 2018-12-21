@@ -39,7 +39,7 @@ docker run --rm --name nfsserver -h nfserver --net ldapnet --privileged -it edta
 
 ```
 
-per SAMBA:
+Per SAMBA:
 ```
 docker run --rm --name ldap -h ldap --net sambanet -d edtasixm06/ldapserver:18group
 docker run --rm --name host -h host --net sambanet --privileged -it edtasixm06/hostpam:18homesamba
