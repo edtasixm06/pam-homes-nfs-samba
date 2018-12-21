@@ -1,18 +1,51 @@
-# privat
-## @edt ASIX M06-ASO Curs 2018-2019
+# privat / pam
+# @edt ASIX M06-ASO Curs 2017-2018
 
-Repositoris
+Podeu trobar les imatges docker al Dockehub de [edtasixm06](https://hub.docker.com/u/edtasixm06/)
 
- * **pam** repositori per implementar amb pam els homes dels usuaris utilitzant:
-   * **nfs** els homes dels usuaris es munten per nfs.
-   * **samba** els homes dels usuaris són shares samba.
-   * **sshfs** els homes dels usuaris es munten per sshfs.
+Podeu trobar la documentació del mòdul a [ASIX-M06](https://sites.google.com/site/asixm06edt/)
 
- * **nfsd** repositori per generar servidors nfs.
+ASIX M06-ASO Escola del treball de barcelona
 
 
-PENDENT:
+Repositori per implementar via pam_mount.so els homes dels usuaris utilitzant:
 
- * resoldre si el client ha de tenir o no rpcbind i rpc.statd
- * resoldre que la propietat sigui dels usuris i ni de root
+ * **nfs**
+ * **samba**
+ * **sshfs**
+
+#### NFS
+
+* **hostpam:18homenfs** host pam amb authenticació ldap. Munta els homes de l'usuari via nfs.
+Per posar en funcionament aquest model calen tres elements: un servidor LDAP, un servidor NFS i un host que actua de 
+client amb PAM + LDAP + pam_mount.so per carregar els homes dels usuaris via NFS.
+
+* **hostpam:18homesamba** host pam amb authenticació ldap. Munta els homes de l'usuari via samba.
+Per posar en funcionament aquest model calen tres elements: un servidor LDAP, un servidor SAMBA i un host que actua de
+client amb PAM + LDAP + pam_mount.so per carregar els homes dels usuaris via SAMBA.
+
+
+
+
+#### Execució
+
+En global s'engega el servidor ldap, el servidor nfs i el host amb pam configurat per crear i muntar els homes dels usuaris via nfs.
+
+Per NFS:
+```
+docker run --rm --name ldap -h ldap --net ldapnet -d edtasixm06/ldapserver:18group
+docker run --rm --name host -h host --net ldapnet --privileged -it edtasixm06/hostpam:18homenfs
+docker run --rm --name nfsserver -h nfserver --net ldapnet --privileged -it edtasixm06/nfsserver:18base
+
+```
+
+per SAMBA:
+```
+docker run --rm --name ldap -h ldap --net sambanet -d edtasixm06/ldapserver:18group
+docker run --rm --name host -h host --net sambanet --privileged -it edtasixm06/hostpam:18homesamba
+
+docker run --rm --name samba -h samba --net sambanet --privileged -it edtasixm06/samba:18ldapusers
+o bé
+docker run --rm --name samba -h samba --net sambanet --privileged -it edtasixm06/samba:18ldapsam
+```
 
