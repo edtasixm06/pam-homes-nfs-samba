@@ -1,4 +1,4 @@
-# privat / pam
+# pam-homes-nfs-samba
 # @edt ASIX M06-ASO Curs 2017-2018
 
 Podeu trobar les imatges docker al Dockehub de [edtasixm06](https://hub.docker.com/u/edtasixm06/)
