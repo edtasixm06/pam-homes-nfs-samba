@@ -25,11 +25,14 @@ Per posar en funcionament aquest model calen tres elements: un servidor LDAP, un
 client amb PAM + LDAP + pam_mount.so per carregar els homes dels usuaris via NFS. Varia de l'anterior en que
 utilitza un bucle *cutre* per quedar en detach.
 
+#### SAMBA
+
 * **hostpam:18homesamba** host pam amb authenticació ldap. Munta els homes de l'usuari via samba.
 Per posar en funcionament aquest model calen tres elements: un servidor LDAP, un servidor SAMBA i un host que actua de
 client amb PAM + LDAP + pam_mount.so per carregar els homes dels usuaris via SAMBA.
 
-
+* **hostpam:18homesambad** Idem host pam amb autenticació ldap, basat en hostpam:18homesamba que incoprpora un bucle 
+*cutre* per poder quedar en detach.
 
 
 #### Execució
@@ -62,3 +65,8 @@ o bé
 docker run --rm --name samba -h samba --net sambanet --privileged -it edtasixm06/samba:18ldapsam
 ```
 
+```
+docker run --rm --name ldap -h ldap --net sambanet -d edtasixm06/ldapserver:18group
+docker run --rm --name samba -h samba --net sambanet --privileged -d edtasixm06/samba:18detach
+docker run --rm --name host -h host --net sambanet --privileged -d edtasixm06/hostpam:18homesambad
+```
